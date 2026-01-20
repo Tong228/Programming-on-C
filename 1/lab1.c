@@ -16,11 +16,13 @@ int main()
         x2 = (-b - sqrt(d)) / (2 * a);
         printf("x1 = %f\nx2 = %f", x1, x2);
     }
+
     if(d==0)
     {
         x1 = -b / (2 * a);
         printf("%f", x1);
     }
+    
     if(d<0)
     {
         printf("Уравнение не имеет корней");

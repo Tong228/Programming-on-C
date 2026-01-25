@@ -9,8 +9,8 @@ int main()
     {
         for (m=0; m<3; m++)
         {
-            scanf("%f", &input);
-            matrix3x3[n][m] = input;
+            /*scanf("%f", &input);*/
+            matrix3x3[n][m] = scanf();
             printf("%.0f ", matrix3x3[n][m]);
         }
     printf("\n");

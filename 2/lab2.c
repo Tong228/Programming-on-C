@@ -13,6 +13,7 @@ int main()
     {
         matrix1[i] = (double *)malloc(size1 * sizeof(double));
     }
+
     // Ввод матрицы
     printf("Enter matrix elements\n");
     for (n=0;n<size1;n++)
@@ -83,6 +84,7 @@ int main()
             }
         }
     }
+
     //Вывод квадрата матрицы 2 на 2 
     printf("Matrix square:\n");
     for(i = 0; i < size2; i++) {
@@ -98,18 +100,21 @@ int main()
     {
         free(matrix1[i]);
     }
+
     free(matrix1);
     // matrix2
     for (int i = 0; i<size2; i++)
     {
         free(matrix2[i]);
     }
+
     free(matrix2);
     // result_matrix2
     for (int i = 0; i<size2; i++)
     {
         free(result_matrix2[i]);
     }
+
     free(result_matrix2);
     printf("Press Enter to exits"); 
     
@@ -117,5 +122,6 @@ int main()
     // fflush(stdin); 
     getchar(); // Я так понимаю 2 гетчар потому что после ввода последнего числа, я нажимаю Enter, что является /n, гетчар его съедает и завершает программу
     getchar(); // А когда их два, то следующий гетчар ждёт уже моего решения закрыть программу
+    
     return 0;
 }

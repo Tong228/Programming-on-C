@@ -6,6 +6,7 @@ int main()
     int n, m;
 
     // запись матрицы 
+    printf("Enter matrix elements\n");
     for (n=0;n<3;n++)
 	{
 		for(m=0;m<3;m++)
@@ -37,6 +38,27 @@ int main()
         }
     }
     printf("Sum of the elements of the main diagonal: %.0lf\n", sum);
+
+    //Вывод ээлементов побочной диагонали
+    sum = 0;
+    for (n=0; n<3; n++)
+    {
+        for (m=0; m<3; m++)
+        {
+            if(m == n) sum += matrix3x3[n][3 - 1 - m];
+        }
+    }
+
+    printf("Sum of the elements of the secondary diagonal: %.0lf\n", sum);
+
+    //Возведение матрицы в квадрат
+    for (n=0; n<3; n++)
+    {
+        for (m=0; m<3; m++)
+        {
+            
+        }
+    }
 
     printf("Press Enter to exits");
     

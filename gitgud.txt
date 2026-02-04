@@ -2,5 +2,10 @@ git add .
 git commit -m "new commit"
 git push
 
+git reset
+
 
 gcc lab2.c -o lab2
+
+Для компиляции больше чем 1 файла
+gcc main.c triangle.c -o lab4 -lm

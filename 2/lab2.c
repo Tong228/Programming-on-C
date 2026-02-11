@@ -3,7 +3,9 @@
 int main()
 {
     double matrix3x3[3][3];
-    int n, m;
+    int matrix2x2[2][2];
+     int R[N][N] = {0};
+    int n, m, i , j;
 
     // запись матрицы 
     printf("Enter matrix elements\n");
@@ -56,7 +58,11 @@ int main()
     {
         for (m=0; m<3; m++)
         {
-            
+            R[i][j] = 0;
+            for (int k = 0; k < N; k++) 
+            {
+                R[i][j] += A[i][k] * A[k][j];
+            }
         }
     }
 

@@ -4,8 +4,7 @@ int main()
 {
     double matrix3x3[3][3];
     int matrix2x2[2][2];
-     int R[N][N] = {0};
-    int n, m, i , j;
+    int n, m, i , j, k, result_matrix2x2[2][2];
 
     // запись матрицы 
     printf("Enter matrix elements\n");
@@ -53,17 +52,36 @@ int main()
 
     printf("Sum of the elements of the secondary diagonal: %.0lf\n", sum);
 
-    //Возведение матрицы в квадрат
-    for (n=0; n<3; n++)
+    //Запись матрицы 2 на 2
+    printf("Enter matrix elements\n");
+    for (n=0;n<2;n++)
+	{
+		for(m=0;m<2;m++)
+		{
+			printf("[%d][%d]\n", n, m);
+			scanf("%lf", &matrix2x2[n][m]);
+		}
+	}
+
+    //Возведение матрицы 2 на 2 в квадрат
+    for(i = 0; i < 2; i++) 
     {
-        for (m=0; m<3; m++)
+        for(j = 0; j < 2; j++)
         {
-            R[i][j] = 0;
-            for (int k = 0; k < N; k++) 
+            for(k = 0; k < 2; k++) 
             {
-                res = [];
+                result_matrix2x2[i][j] += matrix2x2[i][k] * matrix2x2[k][j];
             }
         }
+    }
+
+    //Вывод квадрата матрицы 2 на 2 
+    printf("kvadrat matrix 2 na 2:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 2; j++) {
+            printf("%lf ", result_matrix2x2[i][j]);
+        }
+        printf("\n");
     }
 
     printf("Press Enter to exits");

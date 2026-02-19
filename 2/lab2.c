@@ -79,7 +79,7 @@ int main()
     printf("kvadrat matrix 2 na 2:\n");
     for(i = 0; i < 2; i++) {
         for(j = 0; j < 2; j++) {
-            printf("%lf ", result_matrix2x2[i][j]);
+            printf("%.0lf ", result_matrix2x2[i][j]);
         }
         printf("\n");
     }

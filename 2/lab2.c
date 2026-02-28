@@ -1,157 +1,121 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 int main()
 {
-    // === МАТРИЦА 1 (double) ===
-    int size1;
-    printf("Введите размер первой матрицы (NxN): ");
-    scanf("%d", &size1);
-    
-    // Выделение памяти для матрицы 1
+    int size1, size2;
+    int n, m, i , j, k;
+    // запись матрицы 
+    printf("Enter the size of the square matrix (in one number)");
+    scanf("%d",&size1);
+    // Выделение памяти под матрицу
     double **matrix1 = (double **)malloc(size1 * sizeof(double *));
-    for (int i = 0; i < size1; i++)
+    for (int i=0; i < size1; i++)
     {
         matrix1[i] = (double *)malloc(size1 * sizeof(double));
     }
-    
-    // Ввод матрицы 1
-    printf("\nВведите элементы матрицы %dx%d:\n", size1, size1);
-    for (int n = 0; n < size1; n++)
+    // Ввод матрицы
+    printf("Enter matrix elements\n");
+    for (n=0;n<size1;n++)
     {
-        for (int m = 0; m < size1; m++)
+        for(m=0;m<size1;m++)
         {
-            printf("[%d][%d]: ", n, m);
+            printf("[%d][%d]\n", n, m);
             scanf("%lf", &matrix1[n][m]);
         }
     }
     
-    // Вывод матрицы 1
-    printf("\nВаша матрица %dx%d:\n", size1, size1);
-    for (int n = 0; n < size1; n++)
-    {
-        for (int m = 0; m < size1; m++)
-        {
-            printf("%.2lf ", matrix1[n][m]);
-        }
-        printf("\n");
-    }
-    
-    // Сумма главной диагонали
+    // Сумма главной диагонали матрицы
     double sum = 0;
-    for (int n = 0; n < size1; n++)
+    for (n=0; n < size1; n++)
     {
-        sum += matrix1[n][n];
+        for (m=0; m  <size1; m++)
+        {
+            if(m == n) sum += matrix1[n][m];
+        }
     }
-    printf("\nСумма элементов главной диагонали: %.2lf\n", sum);
-    
-    // Сумма побочной диагонали
+    printf("Sum of the elements of the main diagonal: %.0lf\n", sum);
+    // Сумма элементов побочной диагонали
     sum = 0;
-    for (int n = 0; n < size1; n++)
+    for (n=0; n<size1; n++)
     {
-        sum += matrix1[n][size1 - 1 - n];
-    }
-    printf("Сумма элементов побочной диагонали: %.2lf\n", sum);
-    
-    // === МАТРИЦА 2 (int) ===
-    int size2;
-    printf("\nВведите размер второй матрицы (NxN): ");
-    scanf("%d", &size2);
-    
-    // Выделение памяти для матрицы 2
-    int **matrix2 = (int **)malloc(size2 * sizeof(int *));
-    for (int i = 0; i < size2; i++)
-    {
-        matrix2[i] = (int *)malloc(size2 * sizeof(int));
-    }
-    
-    // Выделение памяти для результата
-    int **result_matrix = (int **)malloc(size2 * sizeof(int *));
-    for (int i = 0; i < size2; i++)
-    {
-        result_matrix[i] = (int *)malloc(size2 * sizeof(int));
-    }
-    
-    // Ввод матрицы 2
-    printf("\nВведите элементы матрицы %dx%d:\n", size2, size2);
-    for (int n = 0; n < size2; n++)
-    {
-        for (int m = 0; m < size2; m++)
+        for (m=0; m<size1; m++)
         {
-            printf("[%d][%d]: ", n, m);
-            scanf("%d", &matrix2[n][m]);
+            if(m == n) sum += matrix1[n][size1 - 1 - m];
         }
     }
-    
-    // Вывод матрицы 2
-    printf("\nВаша матрица %dx%d:\n", size2, size2);
-    for (int i = 0; i < size2; i++)
+    printf("Sum of the elements of the secondary diagonal: %.0lf\n", sum);
+
+    //Запись матрицы 2 на 2
+    printf("Enter the size of the square matrix (in one number)");
+    scanf("%d",&size2);
+
+    double **matrix2 = (double **)malloc(size2 * sizeof(double *));
+    for (int i=0; i < size2; i++)
     {
-        for (int j = 0; j < size2; j++)
-        {
-            printf("%d ", matrix2[i][j]);
-        }
-        printf("\n");
+        matrix2[i] = (double *)malloc(size2 * sizeof(double));
     }
-    
-    // Инициализация result_matrix нулями
-    for (int i = 0; i < size2; i++)
+
+    printf("Enter matrix elements\n");
+    for (n=0;n<size2;n++)
     {
-        for (int j = 0; j < size2; j++)
+        for(m=0;m<size2;m++)
         {
-            result_matrix[i][j] = 0;
+            printf("[%d][%d]\n", n, m);
+            scanf("%lf", &matrix2[n][m]);
         }
     }
-    
-    // Возведение матрицы в квадрат
+
+    // Выделение памяти для для result_matrix2
+    int **result_matrix2 = (int**)malloc(size2 * sizeof(int *));
     for (int i = 0; i < size2; i++)
     {
-        for (int j = 0; j < size2; j++)
+        result_matrix2[i] = (int *)malloc(size2 * sizeof(int *));
+    }
+
+    //Возведение матрицы 2 на 2 в квадрат
+    for(i = 0; i < size2; i++) 
+    {
+        for(j = 0; j < size2; j++)
         {
-            for (int k = 0; k < size2; k++)
+            for(k = 0; k < size2; k++) 
             {
-                result_matrix[i][j] += matrix2[i][k] * matrix2[k][j];
+                result_matrix2[i][j] += matrix2[i][k] * matrix2[k][j];
             }
         }
     }
-    
-    // Вывод квадрата матрицы
-    printf("\nКвадрат матрицы %dx%d:\n", size2, size2);
-    for (int i = 0; i < size2; i++)
-    {
-        for (int j = 0; j < size2; j++)
-        {
-            printf("%d ", result_matrix[i][j]);
+    //Вывод квадрата матрицы 2 на 2 
+    printf("kvadrat matrix 2 na 2:\n");
+    for(i = 0; i < size2; i++) {
+        for(j = 0; j < size2; j++) {
+            printf("%.0lf ", result_matrix2[i][j]);
         }
         printf("\n");
     }
-    
-    // === ОСВОБОЖДЕНИЕ ПАМЯТИ ===
-    
-    // Освобождение matrix1
-    for (int i = 0; i < size1; i++)
+
+    // Освобождение памяти
+    // matrix1
+    for (int i = 0; i<size1; i++)
     {
         free(matrix1[i]);
     }
     free(matrix1);
-    
-    // Освобождение matrix2
-    for (int i = 0; i < size2; i++)
+    // matrix2
+    for (int i = 0; i<size2; i++)
     {
         free(matrix2[i]);
     }
     free(matrix2);
-    
-    // Освобождение result_matrix
-    for (int i = 0; i < size2; i++)
+    // result_matrix2
+    for (int i = 0; i<size2; i++)
     {
-        free(result_matrix[i]);
+        free(result_matrix2[i]);
     }
-    free(result_matrix);
+    free(result_matrix2);
+    printf("Press Enter to exits"); 
     
-    printf("\nНажмите Enter для выхода...");
-    getchar();
-    getchar();
-    
+    // Очистка буфера перед ожиданием, если до этого был ввод
+    // fflush(stdin); 
+    getchar(); // Я так понимаю 2 гетчар потому что после ввода последнего числа, я нажимаю Enter, что является /n, гетчар его съедает и завершает программу
+    getchar(); // А когда их два, то следующий гетчар ждёт уже моего решения закрыть программу
     return 0;
 }

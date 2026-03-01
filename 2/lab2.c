@@ -66,10 +66,10 @@ int main()
     }
 
     // Выделение памяти для для result_matrix2
-    int **result_matrix2 = (int**)malloc(size2 * sizeof(int *));
+    double **result_matrix2 = (double**)malloc(size2 * sizeof(double *));
     for (int i = 0; i < size2; i++)
     {
-        result_matrix2[i] = (int *)malloc(size2 * sizeof(int *));
+        result_matrix2[i] = (double *)calloc(size2, sizeof(double *));
     }
 
     //Возведение матрицы 2 на 2 в квадрат
@@ -84,7 +84,7 @@ int main()
         }
     }
     //Вывод квадрата матрицы 2 на 2 
-    printf("kvadrat matrix 2 na 2:\n");
+    printf("Matrix square:\n");
     for(i = 0; i < size2; i++) {
         for(j = 0; j < size2; j++) {
             printf("%.0lf ", result_matrix2[i][j]);

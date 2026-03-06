@@ -27,48 +27,54 @@ int main()
     }
 
     // Сумма главной диагонали матрицы
-    double sum = 0;
+    double sum_main_diagonal = 0;
     for (n=0; n < size1; n++)
     {
         for (m=0; m  <size1; m++)
         {
-            if(m == n) sum += matrix1[n][m];
+            if(m == n) sum_main_diagonal += matrix1[n][m];
         }
     }
 
-    printf("Sum of the elements of the main diagonal: %.0lf\n", sum);
+    printf("Sum of the elements of the main diagonal: %.0lf\n", sum_main_diagonal);
     
-    // Сумма элементов побочной диагонали
-    sum = 0;
+    // Сумма побочной диагонали
+    double sum_secondary_diagonal = 0;
     for (n=0; n<size1; n++)
     {
         for (m=0; m<size1; m++)
         {
-            if(m == n) sum += matrix1[n][size1 - 1 - m];
+            if(m == n) sum_secondary_diagonal += matrix1[n][size1 - 1 - m];
         }
     }
-    printf("Sum of the elements of the secondary diagonal: %.0lf\n", sum);
+    printf("Sum of the elements of the secondary diagonal: %.0lf\n", sum_secondary_diagonal);
 
     //Является ли матрица Магическим квадратом??
-
-    double sum_diagonal, sum_horizontal, sum_verical = 0;
-    //По диагонали
-    for (n=0; n < size1; n++)
-    {
-        for (m=0; m  <size1; m++)
+    double sum_horizontal, sum_verical = 0;
+    //Проверяем по диагоналям
+    if (sum_main_diagonal == sum_secondary_diagonal)
+        //проверяем по вертикалям и горизонталям
+        for (int i = 0; i < n; i++) 
         {
-            if(m == n) sum_diagonal += matrix1[n][m];
-        }
+            for (int j = 0; j < n; j++) 
+            {
+                sum_horizontal += matrix1[i][j];
+                sum_verical += matrix1[j][i];
+                if (sum_horizontal == sum_verical)
+                    printf("It's a magic square!\n");
+            }
     }
 
-    //По горизонтали
-    for (n=0; n < size1; n++)
+    for (int i = 0; i<size1; i++)
     {
-        for (m=0; m  <size1; m++)
-        {
-            if(n == 1) sum_diagonal += matrix1[n][m];
-        }
+        free(matrix1[i]);
     }
+    free(matrix1);
 
+    printf("Press Enter to exits"); 
+    
+    getchar(); 
+    getchar(); 
+    return 0;
     
 }

@@ -6,8 +6,13 @@ int main()
     int n, m, i , j, k;
 
     // запись матрицы 
-    printf("Enter the size of the square matrix (in one number)");
-    scanf("%d",&size1);
+    printf("Enter the size of the square matrix (in one number): ");
+    scanf("%d", &size1);
+    // if (scanf("%d", &size1) != 1 || size1 <= 0);
+    //     printf("Invalid size!\n");
+    //     return 1;
+    
+
     // Выделение памяти под матрицу
     double **matrix1 = (double **)malloc(size1 * sizeof(double *));
     for (int i=0; i < size1; i++)
@@ -50,22 +55,24 @@ int main()
     printf("Sum of the elements of the secondary diagonal: %.0lf\n", sum_secondary_diagonal);
 
     //Является ли матрица Магическим квадратом??
-    double sum_horizontal, sum_verical = 0;
-    //Проверяем по диагоналям
+    double sum_horizontal = 0;
+    double sum_vertical = 0;
+    //Проверяем по диагоналям   
     if (sum_main_diagonal == sum_secondary_diagonal)
         //проверяем по вертикалям и горизонталям
-        for (int i = 0; i < n; i++) 
+        for (i = 0; i < size1; i++) 
         {
-            for (int j = 0; j < n; j++) 
+            for (j = 0; j < size1; j++) 
             {
                 sum_horizontal += matrix1[i][j];
-                sum_verical += matrix1[j][i];
-                if (sum_horizontal == sum_verical)
-                    printf("It's a magic square!\n");
+                sum_vertical += matrix1[j][i];
             }
-    }
+            if (sum_main_diagonal == sum_horizontal || sum_main_diagonal == sum_vertical)
+                printf("It's a magic square!\n");
+                break;
 
-    for (int i = 0; i<size1; i++)
+    }
+    for (i = 0; i<size1; i++)
     {
         free(matrix1[i]);
     }

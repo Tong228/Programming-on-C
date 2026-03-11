@@ -4,6 +4,10 @@ int main()
 {
     int size1;
     int n, m, i , j, k;
+    char buba;
+    printf("80 symbols: ");
+    scanf("%d", buba);
+    fgets(buba, 80 , stdin);
 
     // запись матрицы 
     printf("Enter the size of the square matrix (in one number): ");
@@ -67,7 +71,8 @@ int main()
                 sum_horizontal += matrix1[i][j];
                 sum_vertical += matrix1[j][i];
             }
-            if (sum_main_diagonal == sum_horizontal || sum_main_diagonal == sum_vertical)
+
+            if (sum_main_diagonal == sum_horizontal && sum_main_diagonal == sum_vertical)
                 printf("It's a magic square!\n");
                 break;
 

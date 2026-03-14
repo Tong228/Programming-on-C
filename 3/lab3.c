@@ -1,13 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 int main()
 {
     int size1;
     int n, m, i , j, k;
-    char buba;
-    printf("80 symbols: ");
-    scanf("%d", buba);
-    fgets(buba, 80 , stdin);
+    char buffer[81];
+    printf("Enter 80 symbols: ");
+    fgets(buffer, 80 , stdin);
+
+    printf("Text before conversion: %s\n", buffer);
+    printf("String length: %lu\n", strlen(buffer));
+
+    for (i = 0; buffer[i] != 0; i++)
+    {
+        if (buffer[i]=='a')
+        {
+            buffer[i] = 'A';
+        }
+        else if (buffer[i]=='b')
+        {
+            buffer[i] = 'B';
+        }
+    }
+
+    printf("Text after conversion: %s\n", buffer);
+    printf("String length: %lu\n", strlen(buffer));
+
+    //81 Потому что в конце любой строки в C обязан стоять невидимый «нулевой символ» '\0' означающий что это string
 
     // запись матрицы 
     printf("Enter the size of the square matrix (in one number): ");

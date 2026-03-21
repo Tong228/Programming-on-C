@@ -2,13 +2,13 @@
 #include <math.h>
 
 int main() {
-    int a, b ,c, perimeter;
+    int a, b ,c, p, s;
     printf("Введите три стороны треугольника: ");
-    if (scanf("%d", &a, &b, &c)) 
+    
     {
 
     }
-    perimeter = a + b + c;
+    p = a + b + c;
     
 
     

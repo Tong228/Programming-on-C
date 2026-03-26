@@ -23,11 +23,6 @@ double triangle_area(double a, double b, double c)
 bool proof_of_correct_triangle(double a, double b, double c)
 
 {
-    if (a+b>c) {
-    }
-    if (c+b>a) {
-    }
-    if (a+c>b) {
-    }
+    return (a + b > c) && (a + c > b) && (b + c > a);
     
 }

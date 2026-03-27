@@ -14,3 +14,16 @@ int main()
 
 
 }
+
+if (proof_of_correct_triangle(a, b, c)) {
+        double p = calculate_perimeter(a, b, c);
+        double s = calculate_area(a, b, c);
+        
+        printf("Периметр: %.2f\n", p);
+        printf("Площадь: %.2f\n", s);
+    } else {
+        printf("Треугольник с такими сторонами не существует.\n");
+    }
+
+    return 0;
+}

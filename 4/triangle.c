@@ -20,9 +20,15 @@ double triangle_area(double a, double b, double c)
     return s;
 }
 
-bool proof_of_correct_triangle(double a, double b, double c)
+int proof_of_correct_triangle(double a, double b, double c)
 
 {
-    return (a + b > c) && (a + c > b) && (b + c > a);
-    
+    if ((a + b > c) && (a + c > b) && (b + c > a)) 
+    {
+        return 1;
+    }
+    else 
+    {
+        return 0;
+    }
 }

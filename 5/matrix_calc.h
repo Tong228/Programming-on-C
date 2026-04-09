@@ -1,0 +1,1 @@
+void calculate_matrix(double** a, double** b, int n);

@@ -14,7 +14,7 @@ double triangle_area(double a, double b, double c)
 {
     double half_p;
     double s;
-
+    // Нахождение площади треугольника через полупериметр
     half_p = (a+b+c)/2;
     s = sqrt(half_p*(half_p-a)*(half_p-b)*(half_p-c));
     return s;

@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include "matrix_calc.h"
 
-double sum_matrix(double a, double b, double res, int n) {
+void sum_matrices(double** a, double** b, double** res, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             res[i][j] = a[i][j] + b[i][j];
@@ -11,3 +11,11 @@ double sum_matrix(double a, double b, double res, int n) {
     }
 }
 
+
+void sub_matrices(double** a, double** b, double** res, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            res[i][j] = a[i][j] - b[i][j];
+        }
+    }
+}

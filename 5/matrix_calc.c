@@ -19,3 +19,14 @@ void sub_matrices(double** a, double** b, double** res, int n) {
         }
     }
 }
+
+void multiply_matrices(double** a, double** b, double** res, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            res[i][j] = 0;
+            for (int k = 0; k < n; k++) {
+                res[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+}

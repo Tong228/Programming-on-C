@@ -1,11 +1,21 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "matrix.h"
 
-int main() 
-{
-    double **matrix1 = (double **)malloc(size1 * sizeof(double *));
-    for (int i=0; i < size1; i++)
-    {
-        matrix1[i] = (double *)malloc(size1 * sizeof(double));
+
+    // 2. Выбираем операцию
+    switch (op) {
+        case '+':
+            add_matrices(a, b, result, n);
+            break;
+        case '-':
+            sub_matrices(a, b, result, n);
+            break;
+        case '*':
+            multiply_matrices(a, b, result, n);
+            break;
+
+            return NULL;
     }
-}
+
+    return result;

@@ -16,9 +16,11 @@ int compare(Person a, Person b, int fields[], int field_count) {
     for (int i = 0; i < field_count; i++) {
         int res = 0;
         int f = fields[i];
-
+        // Блок сравнения. Если 1(а > b) , то поменять местами
+        // -1(а < b) оставить как есть
+        // 0(a = b) оставить как есть 
         if (f == 1) res = a.year - b.year; // По году
-        else if (f == 2) res = strcmp(a.surname, b.surname); // По фамилии
+        else if (f == 2) res = strcmp(a.surname, b.surname); // По фамилии. strcmp() - лексикографическое сравнение двух строк
         else if (f == 3) res = strcmp(a.gender, b.gender); // По полу
         else if (f == 4) { // По росту
             if (a.height > b.height) res = 1;

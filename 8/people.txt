@@ -1,0 +1,4 @@
+Ivan Ivanov 1995 male 1.82
+Sophia Petrova 2000 female 1.65
+Petr Ivanov 1995 male 1.75
+Elena Pavlovna 1990 female 1.70

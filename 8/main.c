@@ -80,10 +80,13 @@ int main() {
     // Выводим результат
     printf("\nSorting result:\n");
     for (int i = 0; i < count; i++) {
-        printf("%s %s | %d | %s | %.2f м\n", 
+        printf("%s %s | %d | %s | %.2f m\n", 
                group[i].name, group[i].surname, 
                group[i].year, group[i].gender, group[i].height);
     }
+
+    getchar();
+    getchar();
 
     return 0;
 }

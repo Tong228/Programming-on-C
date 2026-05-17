@@ -2,10 +2,12 @@
 #include <stdio.h>
 
 int main(){
-    char A[] = "Hello world\n";
-    printf(A);
+    char input[256];
+    double total_sum = 0.0;
 
-    char *token = strtok(A, " ");
+    fgets(input, sizeof(input), stdin);
+
+    char *token = strtok(input, " ");
 
     while (token != NULL) {
         printf("Token %s\n", token);

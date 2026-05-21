@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <windows.h>
 
 // Структура person
 typedef struct {
@@ -11,12 +12,15 @@ typedef struct {
     float height;
 } Person;
 
+Person p;
+
 // Функция для сравнения двух людей по выбранным полям
 int compare(Person a, Person b, int fields[], int field_count) {
     for (int i = 0; i < field_count; i++) {
         int res = 0;
         int f = fields[i];
-        // Блок сравнения. Если 1(а > b) , то поменять местами
+        //1 - Year, 2 - Surname, 3 - Gender, 4 - Height
+        // Блок сравнения. Если res = 1(а > b) , то поменять местами
         // -1(а < b) оставить как есть
         // 0(a = b) оставить как есть 
         if (f == 1) res = a.year - b.year; // По году
@@ -35,25 +39,35 @@ int compare(Person a, Person b, int fields[], int field_count) {
 }
 
 int main() {
+    SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);
     // Создаем файл и записываем в него данные
-    FILE *f_out = fopen("people.txt", "w");
-    fprintf(f_out, "Ivan Ivanov 1995 male 1.82\n");
-    fprintf(f_out, "Sophia Petrova 2000 female 1.65\n");
-    fprintf(f_out, "Petr Ivanov 1995 male 1.75\n");
-    fprintf(f_out, "Elena Pavlovna 1990 female 1.70\n");
-    fclose(f_out);
+    FILE *inputFile = fopen("input.txt", "w");
+    fprintf(inputFile, "Иванова Оксана 1975 Жен 1.95\n");
+    fprintf(inputFile, "Сидоров Николай 1981 Муж 1.81\n");
+    fprintf(inputFile, "Магомедов Магомед 2000 Муж 2.00\n");
+    fprintf(inputFile, "Баскаков Николай 2003 Муж 2.03\n");
+    fprintf(inputFile, "Бенедиктов Камбербетч 1951 Муж 1.51\n");
+    fprintf(inputFile, "Драндулетов Драндулет 1915 Муж 1.15\n");
+    fprintf(inputFile, "Воробьёва Елена 1956 Жен 1.56\n");
+    fprintf(inputFile, "Воробьянинов Ипполит 1978 Муж 1.78\n");
+    fprintf(inputFile, "Иванов Иван 1999 Муж 1.99\n");
+    fprintf(inputFile, "Петров Алексей 1985 Муж 1.85\n");
+
+    fclose(inputFile);
+    printf("File input.txt created\n");
 
     // Читаем данные из файла в массив
-    Person group[100];
+    Person group[50];
     int count = 0;
-    FILE *f_in = fopen("people.txt", "r");
-    while (fscanf(f_in, "%s %s %d %s %f", 
+    FILE *readFile = fopen("input.txt", "r");
+    while (fscanf(readFile, "%s %s %d %s %f", 
            group[count].name, group[count].surname, 
            &group[count].year, group[count].gender, 
            &group[count].height) != EOF) {
         count++;
     }
-    fclose(f_in);
+    fclose(readFile);
 
     // Выбор полей для сортировки
     int sort_fields[4];
